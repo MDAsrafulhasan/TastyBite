@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-orpro)$jjqpe6+5+=cql!+d!2vnf37!)!f*7c$fuvv0^09=7un
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = ['https://tastybite.onrender.com', 'https://*.127.0.0.1']
 
 # Application definition
 
