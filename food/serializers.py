@@ -7,7 +7,7 @@ class FoodItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = FoodItem
         # fields = '__all__'
-        fields = ['name', 'price', 'description', 'category', 'image', 'is_special', 'discount', 'discounted_price']
+        fields = ['id','name', 'price', 'description', 'category', 'image', 'is_special', 'discount', 'discounted_price']
 
 class CategorySerializer(serializers.ModelSerializer):
     # user = serializers.StringRelatedField(many=False)
