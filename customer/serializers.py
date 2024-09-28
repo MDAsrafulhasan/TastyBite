@@ -8,18 +8,23 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = '__all__'
 
-# class CustomerSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Customer
-#         fields = ['id', 'user', 'image']
+class CustomCustomerSerializer(serializers.ModelSerializer):
+    # image = serializers.SerializerMethodField()
+    user = serializers.StringRelatedField(many=False)
+    class Meta:
+        model = Customer
+        fields = ['id', 'user', 'image']
 
 class ReviewSerializer(serializers.ModelSerializer):
-    customer = serializers.StringRelatedField(many=False)
+    # customer = serializers.StringRelatedField(many=False)
     # food_item = serializers.StringRelatedField(many=False)
-    # customer = CustomerSerializer(many=False)
+    customer = CustomCustomerSerializer(many=False)
     class Meta:
         model = Review
         fields = '__all__'
+        # fields = ['id','customer', 'food_item','rating','comment','created_at']
+
+
 
         # def save(self):
         #     customer = self.context['request'].user.customer 
