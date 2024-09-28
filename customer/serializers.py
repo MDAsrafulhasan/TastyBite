@@ -46,7 +46,7 @@ class CustomerRegistrationSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(required = True)
     contact_number = serializers.CharField(required = True)
     address = serializers.CharField(required = True)
-    image = serializers.ImageField(required = False, allow_null=True)
+    image = serializers.CharField(max_length=100,default='',required = False, allow_null=True)
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'confirm_password', 'contact_number', 'address','image']
@@ -72,12 +72,11 @@ class CustomerRegistrationSerializer(serializers.ModelSerializer):
         account.is_active = False
         account.save()
 
-        customer = Customer.objects.create(
+        Customer.objects.create(
             user=account,
             contact_number=contact_number,
             address=address,
             image=image)
-        
         return account
 
 class CustomerLoginSerializer(serializers.Serializer):
