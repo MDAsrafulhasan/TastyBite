@@ -9,11 +9,12 @@ from order.models import *
 #     class Meta:
 #         model = CartItems
 #         fields = ['id', 'fooditem', 'price', 'quantity']
-
+from food.serializers import *
 class CartItemSerializer(serializers.ModelSerializer):
     # fooditem = serializers.StringRelatedField()  # Display food item name
     customer = serializers.StringRelatedField(many=False)
-    fooditem = serializers.StringRelatedField(many=False)  # Display food item name
+    # fooditem = serializers.StringRelatedField(many=False)  # Display food item name
+    fooditem = FoodItemSerializer(many=False)  # Display food item name
     # cart = serializers.StringRelatedField(many=False) # Display
     class Meta:
         model = CartItems
