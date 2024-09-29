@@ -2,23 +2,17 @@ from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
 from order.models import *
-
-
-# class CartItemSerializer(serializers.ModelSerializer):
-#     fooditem = serializers.StringRelatedField()
-#     class Meta:
-#         model = CartItems
-#         fields = ['id', 'fooditem', 'price', 'quantity']
 from food.serializers import *
+
 class CartItemSerializer(serializers.ModelSerializer):
     # fooditem = serializers.StringRelatedField()  # Display food item name
-    customer = serializers.StringRelatedField(many=False)
+    # customer = serializers.StringRelatedField(many=False)
     # fooditem = serializers.StringRelatedField(many=False)  # Display food item name
     fooditem = FoodItemSerializer(many=False)  # Display food item name
     # cart = serializers.StringRelatedField(many=False) # Display
     class Meta:
         model = CartItems
-        fields = ['id', 'cart','customer', 'fooditem', 'price', 'quantity']
+        fields = [ 'fooditem', 'price', 'quantity']
 
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(source='cartitems_set', many=True)  #CartItems serializer er sob dekhabe
