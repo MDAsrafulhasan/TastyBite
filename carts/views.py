@@ -17,9 +17,10 @@ class CartViewset(viewsets.ModelViewSet):
     
     def get_queryset(self):
         queryset = super().get_queryset()
-        customer_id = self.request.query_params.get('customer_id')
-        if customer_id:
-            queryset = queryset.filter(customer_id=customer_id)
+        # customer_id = self.request.query_params.get('customer_id')   # search using customer id 
+        user_id = self.request.query_params.get('user_id')    #search using user id
+        if user_id:
+            queryset = queryset.filter(customer__user__id=user_id)
         return queryset
     
     def create(self, request, *args, **kwargs):
