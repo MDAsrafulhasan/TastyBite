@@ -54,7 +54,7 @@ class CartItemViewset(viewsets.ModelViewSet):
         else:
             cart_item.quantity = quantity
             cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
-        cart.total_price += float(cart_item.price)
+        cart.total_price = float(cart_item.price)  #ekhane change kora hoise
         cart_item.save()
         cart.save()
         return Response({'message': 'Item added to cart'})
