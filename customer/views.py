@@ -19,7 +19,7 @@ from rest_framework.authtoken.models import Token
 #for email
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-
+from rest_framework import status
 
 
 class CustomerViewset(viewsets.ModelViewSet):
@@ -55,10 +55,10 @@ class ReviewViewset(viewsets.ModelViewSet):
 
         cart_item = CartItems.objects.filter(customer=customer, fooditem_id=fooditem_id).first()
         if not cart_item:
-            return Response({'error': 'You can only review items you have ordered.'})
+            return Response({'error': 'You can only review items you have ordered.'},status=status.HTTP_400_BAD_REQUEST)
         
         if not cart_item.cart.ordered:
-            return Response({'error': 'You can only review items after placing an order.'})
+            return Response({'error': 'You can only review items after placing an order.'},status=status.HTTP_400_BAD_REQUEST)
 
         return super().create(request, *args, **kwargs)
 
