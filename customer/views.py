@@ -48,10 +48,17 @@ class ReviewViewset(viewsets.ModelViewSet):
         customer = Customer.objects.get(user=request.user)
         fooditem_id = request.data.get('food_item')
 
-        if not CartItems.objects.filter(customer=customer, fooditem_id=fooditem_id).exists():
-            return Response({'error': 'You can only review items you have ordered.'})
+        # if not CartItems.objects.filter(customer=customer, fooditem_id=fooditem_id).exists():
+        #     return Response({'error': 'You can only review items you have ordered.'})
         # if Review.objects.filter(customer=customer, food_item_id=food_item_id).exists():
         #     return Response({'error': 'You have already reviewed this item.'})
+
+        cart_item = CartItems.objects.filter(customer=customer, fooditem_id=fooditem_id).first()
+        if not cart_item:
+            return Response({'error': 'You can only review items you have ordered.'})
+        
+        if not cart_item.cart.ordered:
+            return Response({'error': 'You can only review items after placing an order.'})
 
         return super().create(request, *args, **kwargs)
 
