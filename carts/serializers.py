@@ -12,7 +12,7 @@ class CartItemSerializer(serializers.ModelSerializer):
     # cart = serializers.StringRelatedField(many=False) # Display
     class Meta:
         model = CartItems
-        fields = [ 'fooditem', 'price', 'quantity']
+        fields = ['id','fooditem', 'price', 'quantity']
 
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(source='cartitems_set', many=True)  #CartItems serializer er sob dekhabe
