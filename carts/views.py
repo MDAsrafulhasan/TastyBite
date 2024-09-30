@@ -53,6 +53,7 @@ class CartItemViewset(viewsets.ModelViewSet):
             cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
         else:
             cart_item.quantity = quantity
+            cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
         cart.total_price += float(cart_item.price)
         cart_item.save()
         cart.save()
