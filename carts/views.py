@@ -48,13 +48,37 @@ class CartItemViewset(viewsets.ModelViewSet):
             return Response({'error': 'Food item does not exist'}, status=400)
         cart_item, item_created = CartItems.objects.get_or_create(cart=cart, fooditem=food_item, customer=customer)
 
+
+
+
+
         if not item_created:
             cart_item.quantity += quantity
+            cart.total_price += float(food_item.discounted_price)    #ekhane update korsi
             cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
         else:
             cart_item.quantity = quantity
+            cart.total_price += float(food_item.discounted_price)   #ekhane update korsi
             cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
-        cart.total_price = float(cart_item.price)  #ekhane change kora hoise
+        # ttl_price = cart.total_price
+        # cart.total_price = float(cart_item.price)  
+        # cart.total_price += ttl_price #ekhane change
+
+
+
+
+
+
+
+        # if not item_created:
+        #     cart_item.quantity += quantity
+        #     cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
+        # else:
+        #     cart_item.quantity = quantity
+        #     cart_item.price = cart_item.quantity * food_item.discounted_price   #ekhane update korsi
+        # ttl_price = cart.total_price
+        # cart.total_price = float(cart_item.price)  #ekhane change kora hoise
+        # cart.total_price += ttl_price #ekhane change
         cart_item.save()
         cart.save()
         return Response({'message': 'Item added to cart'})
