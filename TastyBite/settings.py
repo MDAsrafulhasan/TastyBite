@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://tastybite.onrender.com', 'https://*.127.0.0.1']
 
 # Application definition
-APPEND_SLASH = False
 
 INSTALLED_APPS = [
     'corsheaders',
