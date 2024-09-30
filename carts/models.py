@@ -30,8 +30,8 @@ def correct_price(sender, **kwargs):
     # print(kwargs)
     # print('hi')
     cart_items = kwargs['instance']
-    price_of_product = FoodItem.objects.get(id=cart_items.fooditem.id)
-    cart_items.price = float(cart_items.quantity) * float(price_of_product.price)
+    fooditem = FoodItem.objects.get(id=cart_items.fooditem.id)
+    cart_items.price = float(cart_items.quantity) * float(fooditem.discounted_price)   #ekhane update korsi
     # cart_items.total_items = len(total_cart_items)
     cart = Cart.objects.get(id = cart_items.cart.id)
     cart.total_price += cart_items.price
