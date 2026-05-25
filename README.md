@@ -208,10 +208,6 @@ TastyBite embeds an advanced administrative panel that dynamically adapts using 
 ![Food Catalog](https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop)
 *Beautifully categorized dish catalogue with dynamic rating stars and discount tags.*
 
-### 🛡️ Premium Admin Analytical Panel
-![Admin Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop)
-*Chart.js analytics, active order management rows, and Food CRUD management panels.*
-
 ---
 
 ## 🔮 Future Roadmap
