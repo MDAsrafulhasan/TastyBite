@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Items</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="All-page-background">
+    <nav class="d-flex justify-content-around align-items-center p-2">
+        <div>
+            <a id="logo-link" href="./index.html"><img style="height: 50px;" src="./Image/background-logo-edited.png" alt=""></a>
+        </div>
+        <ul class="d-flex gap-4 mb-0 align-items-center">
+            <li class="menu"><a href="./food.html">Foods</a></li>
+            <li class="menu"><a href="./profile.html">Profile</a></li>
+            <li class="menu"><a href="./favorite_foods.html">Favorites</a></li>
+            <li class="menu"><a href="./order_history.html">Order History</a></li>
+            <li onclick="handlelogOut()" class="menu"><a href="#">Logout</a></li>
+            <li class="nav-icon-item">
+                <a href="#" class="nav-icon-link" title="Notifications" id="notification-bell-btn">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-notification" id="nav-notification-count" style="display: none;">0</span>
+                </a>
+                <div class="notification-dropdown" id="notification-dropdown">
+                    <div class="dropdown-header">
+                        <span>Notifications</span>
+                        <button onclick="clearAllNotifications(event)" class="clear-all-btn">Clear All</button>
+                    </div>
+                    <div class="dropdown-body" id="notification-items-container">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+                </div>
+            </li>
+            <li class="nav-icon-item">
+                <a href="./place_order.html" class="nav-icon-link" title="Shopping Cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="badge badge-cart" id="nav-cart-count" style="display: none;">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- search er kaj -->
+    <div class="search-container">
+        <div class="center">
+            <div>
+                <input id="search" type="text" placeholder="search...">
+            </div>
+            <div>
+                <button id="search-button" onclick="handleSearch()">Search</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Premium Price range & Sorting Toolbar -->
+    <div class="filter-toolbar">
+        <div class="filter-group">
+            <div class="filter-item">
+                <label for="price-range">Max Price: <span id="price-val">৳1000</span></label>
+                <input type="range" id="price-range" min="0" max="1000" step="10" value="1000" oninput="applyFiltersAndSort()">
+            </div>
+
+            <div class="filter-item">
+                <label for="category-select">Category:</label>
+                <select id="category-select" onchange="applyFiltersAndSort()">
+                    <option value="all">All Categories</option>
+                </select>
+            </div>
+            
+            <div class="filter-item">
+                <label for="sort-by">Sort By:</label>
+                <select id="sort-by" onchange="applyFiltersAndSort()">
+                    <option value="default">Default</option>
+                    <option value="low-to-high">Price: Low to High</option>
+                    <option value="high-to-low">Price: High to Low</option>
+                    <option value="popular">Popular (Specials First)</option>
+                    <option value="discount">Highest Discount</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- <div id="nodata">
+        <div>
+            <img src="./Image/nodata (1).png" alt="">
+        </div>
+        <div>
+            <h1>hello</h1>
+        </div>
+    </div> -->
+
+    <!-- food items show korar kaj -->
+    <div id="AllFood">
+        <!-- <div class="food-cart">
+            <img class="food-img" src="./Image/satoru-gojo-.png" alt="">
+            <h4>Gojo Satoru</h4>
+            <p>Description</p>
+            <h4>category</h4>
+            <hr>
+            <h4>price <span class="fs-6">50% off</span></h4>
+            <h4>Discount price</h4>
+            <div class="d-flex justify-content-around">
+                <button>Details</button>
+                <button>Add to cart</button>
+            </div>
+        </div> -->
+    </div>
+    <div id="nodata">
+        <img src="./Image/nodata (1).png" alt="">
+    </div>
+
+
+    <!-- footer er kaj -->
+    <footer class="footer-all p-5">
+        <div class="container w-75 m-auto p-5 row">
+            <div class="col-md-6">
+                <h3>TastyBite</h3>
+                <h5>Follow Us On</h5>
+                <div class="icons">
+                    <img src="./Image/LinkedIn.png" alt="">
+                    <img src="./Image/YouTube.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5>Company</h5>
+                <li>About</li>
+                <li>Contact us</li>
+                <li>Culture</li>
+                <li>Blog</li>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center mt-3"><small>Copyright @ TastyBite. All Rights Reserved</small></p>
+
+    </footer>
+
+
+
+    <!-- script -->
+    <script src="./app.js"></script>
+    <script src="./food.js"></script>
+    <script src="./Food_details.js"></script>
+    <script src="./logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
