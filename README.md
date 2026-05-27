@@ -2,7 +2,7 @@
 
 TastyBite is a premium, modern, and fully responsive full-stack food ordering application. It features a decoupled client-server architecture powered by a high-performance **Django REST Framework (DRF)** backend API and a visually stunning **Vanilla HTML/CSS/Bootstrap/JS** frontend client.
 
-Perfect for both standard food enthusiasts looking to order their favorite cuisines and business administrators managing menus, orders, and sales performance.
+Perfect for food enthusiasts looking to explore, bookmark, and order their favorite cuisines.
 
 ---
 
@@ -15,16 +15,15 @@ Perfect for both standard food enthusiasts looking to order their favorite cuisi
     - [Backend Configuration](#1-backend-setup-django-drf)
     - [Frontend Configuration](#2-frontend-setup-htmlcssjs)
 6. [API Directory Overview](#-api-directory-overview)
-7. [Admin Dashboard Highlights](#-admin-dashboard-highlights)
-8. [Screenshots](#-screenshots)
-9. [Future Roadmap](#-future-roadmap)
-10. [Author & Portfolio](#-author--portfolio)
+7. [Screenshots](#-screenshots)
+8. [Future Roadmap](#-future-roadmap)
+9. [Author & Portfolio](#-author--portfolio)
 
 ---
 
 ## 🌟 Project Overview
 
-TastyBite delivers a seamless, interactive food e-commerce experience. The frontend client features state-of-the-art visual enhancements, glassmorphic layout elements, dynamic rating stars, interactive Swiffy Sliders, and smooth animations. The backend service provides secure user registration with automated activation emails, robust Token-based authentication, a writable nested customer profile system, database-driven signals for automated pricing computations, and restricted administrative dashboard viewsets.
+TastyBite delivers a seamless, interactive food e-commerce experience. The frontend client features state-of-the-art visual enhancements, glassmorphic layout elements, dynamic rating stars, interactive Swiffy Sliders, and smooth animations. The backend service provides secure user registration with automated activation emails, robust Token-based authentication, a writable nested customer profile system, and database-driven signals for automated pricing computations.
 
 ---
 
@@ -39,13 +38,6 @@ TastyBite delivers a seamless, interactive food e-commerce experience. The front
 - **Review Guard**: Enforces that only users with **completed purchases** can submit reviews.
 - **Order History Tracks**: Instantly check order history and real-time status transitions.
 - **Aggregated Notifications**: Interactive navbar alert tray populated dynamically.
-
-### 🛡️ Admin Dashboard Features
-- **Overview Stat Cards**: Dynamic revenue calculations, active orders count, food counts, and customer base metrics.
-- **Chart.js Visualizations**: Premium graphical representations of Sales Categories and Revenue Over Time.
-- **Full Foods CRUD Modal**: Admin-only access to add, edit, and delete food items with category mapping.
-- **Order Status Manager**: Live order history tables with active choice dropdowns (`Pending`, `Processing`, `Completed`, `Cancelled`).
-- **Registered Customers Grid**: Direct access to user database lists and details.
 
 ---
 
@@ -64,7 +56,6 @@ TastyBite delivers a seamless, interactive food e-commerce experience. The front
 - **Frameworks**: Bootstrap 5 (Responsive utilities)
 - **Interactions**: Vanilla Modern ES6 Javascript
 - **Visuals**: FontAwesome 4.7 Icons, Swiffy Slider
-- **Charts**: Chart.js 4.x (Dynamic visualizations)
 
 ---
 
@@ -92,7 +83,6 @@ TastyBites/
     ├── order_history.html        # Customer orders history
     ├── profile.html              # Customer profile card
     ├── edit_profile.html         # Writable nested customer profile form
-    ├── admin_dashboard.html      # Administrative panel
     ├── app.js                    # Core app script & routing guards
     ├── style.css                 # Premium custom stylesheets and design tokens
     └── [feature].js              # Feature-specific JavaScript engines
@@ -142,7 +132,7 @@ Ensure you have **Python 3.x** and **Git** installed on your system.
    python manage.py migrate
    ```
 
-6. **Create a Superuser (Admin account)**:
+6. **Create a Superuser (Admin account for Django backend management)**:
    ```bash
    python manage.py createsuperuser
    ```
@@ -181,21 +171,11 @@ Below are the primary endpoints exposed by the DRF API:
 | **Profile** | `/customer/list/?user_id=<id>`| `GET` | Token | Fetches customer credentials |
 | **Profile** | `/customer/list/<id>/` | `PATCH`| Token | Edits nested User & Customer fields |
 | **Catalog**| `/fooditem/items/` | `GET` | None | Lists menu; supports filtering |
-| **Catalog**| `/fooditem/items/` | `POST` | Token + Admin| Adds new dishes |
 | **Cart** | `/carts/cart/?user_id=<id>` | `GET` | Token | Fetches user's active/placed carts |
 | **Cart** | `/carts/cart/<id>/` | `PATCH`| Token | Order submission (`ordered = true`) |
 | **Items** | `/carts/cartitems/` | `POST` | Token | Adds/increments item quantity |
 | **Items** | `/carts/cartitems/<id>/` | `PATCH`| Token | Modifies individual item quantities |
 | **Reviews**| `/customer/reviews/` | `POST` | Token | Submits reviews (orders verified) |
-
----
-
-## 🛡️ Admin Dashboard Highlights
-
-TastyBite embeds an advanced administrative panel that dynamically adapts using Chart.js analytics:
-- **Visual Analytics**: Dynamic Line charts tracing daily income aggregates and Bar charts displaying category order frequencies.
-- **Direct Catalog Alterations**: In-place edit forms, and real-time category updates.
-- **Interactive Order Pipelines**: Admins can change order states via custom dropdown items, triggering instant changes in the client's `order_history.html` view.
 
 ---
 
@@ -224,3 +204,5 @@ Developed by **Md Asraful Hasan**
 - **GitHub**: https://github.com/MDAsrafulhasan
 - **Email**: [EMAIL_ADDRESS]
 
+---
+*TastyBite is licensed under the MIT License. Contributions and PRs are highly welcome!*
