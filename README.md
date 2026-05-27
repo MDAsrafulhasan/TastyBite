@@ -202,7 +202,4 @@ Below are the primary endpoints exposed by the DRF API:
 Developed by **Md Asraful Hasan**
 
 - **GitHub**: https://github.com/MDAsrafulhasan
-- **Email**: [EMAIL_ADDRESS]
-
----
-*TastyBite is licensed under the MIT License. Contributions and PRs are highly welcome!*
+- **Email**: soumick940@gmail.com
